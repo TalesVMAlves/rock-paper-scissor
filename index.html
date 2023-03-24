@@ -8,6 +8,10 @@
 </head>
 <body>
     <script>
+        const WINNING_MSG = 'You won!';
+        const LOSING_MSG = 'You lost!';
+        const DRAW_MSG = "It's a draw";
+        
         function getComputerChoice(){
             rand = Math.random()*3;
             if(rand > 2)        return 'ROCK';
@@ -19,25 +23,43 @@
             player_choice = player_choice.toUpperCase();
             console.log(player_choice, comp_choice);
             if(player_choice === 'ROCK'){
-                if(comp_choice === 'ROCK')          return 'Draw!';
-                else if(comp_choice === 'PAPER')    return 'You lose!';
-                else                                return 'You win!';
+                if(comp_choice === 'ROCK')          return 'draw';
+                else if(comp_choice === 'PAPER')    return 'lose';
+                else                                return 'win';
             }
 
             else if(player_choice === 'PAPER'){
-                if(comp_choice === 'ROCK')          return 'You win!';
-                else if(comp_choice === 'PAPER')    return 'Draw!';
-                else                                return 'You lose!';
+                if(comp_choice === 'ROCK')          return 'win';
+                else if(comp_choice === 'PAPER')    return 'draw';
+                else                                return 'lose';
             }
 
             else{
-                if(comp_choice === 'ROCK')          return 'You lose!';
-                else if(comp_choice === 'PAPER')    return 'You win!';
-                else                                return 'Draw!';
+                if(comp_choice === 'ROCK')          return 'lose';
+                else if(comp_choice === 'PAPER')    return 'win';
+                else                                return 'draw';
             }
         }
-        
-        console.log(result('scissor', getComputerChoice()));
+
+        function game(){
+            let player_score = 0;
+            let comp_score = 0;
+            for(i = 0; i < 5; i++){
+                let player_choice = prompt("Chose your move!");
+                const outcome = result(player_choice, getComputerChoice());
+                if(outcome === 'win'){
+                    player_score++;
+                    alert(WINNING_MSG);
+                }   
+                else if(outcome === 'lose'){
+                    comp_score++;
+                    alert(LOSING_MSG);
+                } 
+                else alert(DRAW_MSG);
+            }
+            alert('Final score: '+player_score+'|'+comp_score);
+        }
+        game();
     </script>
 </body>
 </html>
