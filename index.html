@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice(){
+            rand = Math.random()*3;
+            if(rand > 2)        return 'ROCK';
+            else if(rand > 1)   return 'PAPER';
+            else                return 'SCISSOR';
+        }
+
+        function result(player_choice, comp_choice){
+            player_choice = player_choice.toUpperCase();
+            console.log(player_choice, comp_choice);
+            if(player_choice === 'ROCK'){
+                if(comp_choice === 'ROCK')          return 'Draw!';
+                else if(comp_choice === 'PAPER')    return 'You lose!';
+                else                                return 'You win!';
+            }
+
+            else if(player_choice === 'PAPER'){
+                if(comp_choice === 'ROCK')          return 'You win!';
+                else if(comp_choice === 'PAPER')    return 'Draw!';
+                else                                return 'You lose!';
+            }
+
+            else{
+                if(comp_choice === 'ROCK')          return 'You lose!';
+                else if(comp_choice === 'PAPER')    return 'You win!';
+                else                                return 'Draw!';
+            }
+        }
+        
+        console.log(result('scissor', getComputerChoice()));
+    </script>
+</body>
+</html>
